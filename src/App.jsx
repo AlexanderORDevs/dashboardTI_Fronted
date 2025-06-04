@@ -1,7 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";                                                                                
-import { Dashboard, Auth } from "@/layouts";
-import { Home } from "@/pages/dashboard";
-import { ProtectedRoute } from "../src/routesProtect/ProtectedRoute";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Dashboard, Auth, Uat } from '@/layouts';
+import { Home } from '@/pages/dashboard';
+import { ProtectedRoute } from '../src/routesProtect/ProtectedRoute';
 
 function App() {
   return (
@@ -14,12 +14,27 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/uat/*"
+        element={
+          <ProtectedRoute>
+            <Uat />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Public routes */}
-      <Route path="/auth/*" element={<Auth />} />
+      <Route
+        path="/auth/*"
+        element={
+          <>
+            <Auth />
+          </>
+        }
+      />
 
       {/* Default redirection */}
-      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
+      <Route path="*" element={<Navigate to="/auth/sign-in" replace />} />
     </Routes>
   );
 }

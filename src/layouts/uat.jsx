@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import { IconButton } from '@material-tailwind/react';
+import { useMaterialTailwindController, setOpenConfigurator } from '@/context';
 import {
   Sidenav,
   DashboardNavbar,
@@ -8,12 +9,10 @@ import {
   Footer,
 } from '@/widgets/layout';
 import routes from '@/routes';
-import { useMaterialTailwindController, setOpenConfigurator } from '@/context';
 
-export function Dashboard() {
+export function Uat() {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } = controller;
-
   return (
     <div className="min-h-screen bg-blue-gray-50/50">
       <Sidenav
@@ -37,7 +36,7 @@ export function Dashboard() {
         <Routes>
           {routes.map(
             ({ layout, pages }) =>
-              layout === 'dashboard' &&
+              layout === 'uat' &&
               pages.map(({ path, element }) => (
                 <Route exact path={path} element={element} />
               ))
@@ -50,7 +49,6 @@ export function Dashboard() {
     </div>
   );
 }
+Uat.displayName = '/src/layout/Uat.jsx';
 
-Dashboard.displayName = '/src/layout/dashboard.jsx';
-
-export default Dashboard;
+export default Uat;

@@ -8,7 +8,6 @@ import {
 } from '@heroicons/react/24/solid';
 import { Home, Profile, Tables, Notifications } from '@/pages/dashboard';
 import { SignIn, SignUp } from '@/pages/auth';
-import { apiSend, apiRegister } from '@/pages/apiManager';
 import { CreateRegister } from '@/pages/uat';
 
 const icon = {
@@ -43,20 +42,26 @@ export const routes = [
         path: '/notifications',
         element: <Notifications />,
       },
-    ],
-  },
-  {
-    title: 'Uat Test',
-    layout: 'uat',
-    pages: [
       {
-        icon: <HomeIcon {...icon} />,
-        name: 'Register Create',
-        path: '/create',
+        icon: <ServerStackIcon {...icon} />,
+        name: 'Uat Test',
+        path: '/uatRecords',
         element: <CreateRegister />,
       },
     ],
   },
+  //{
+  // title: 'Uat Test',
+  // layout: 'uat',
+  // pages: [
+  //   {
+  //     icon: <HomeIcon {...icon} />,
+  //     name: 'Register Create',
+  //     path: '/create',
+  //     element: <CreateRegister />,
+  //   },
+  // ],
+  //},
   {
     title: 'auth pages',
     layout: 'auth',

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Typography,
   Card,
@@ -12,32 +12,29 @@ import {
   Avatar,
   Tooltip,
   Progress,
-} from "@material-tailwind/react";
-import {
-  EllipsisVerticalIcon,
-  ArrowUpIcon,
-} from "@heroicons/react/24/outline";
-import { StatisticsCard } from "@/widgets/cards";
-import { StatisticsChart } from "@/widgets/charts";
+} from '@material-tailwind/react';
+import { EllipsisVerticalIcon, ArrowUpIcon } from '@heroicons/react/24/outline';
+import { StatisticsCard } from '@/widgets/cards';
+import { StatisticsChart } from '@/widgets/charts';
 import {
   statisticsCardsData,
   statisticsChartsData,
   projectsTableData,
   ordersOverviewData,
-} from "@/data";
-import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
+} from '@/data';
+import { CheckCircleIcon, ClockIcon } from '@heroicons/react/24/solid';
 
 export function Home() {
   return (
     <div className="mt-12">
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mb-12 grid gap-x-6 gap-y-10 md:grid-cols-2 xl:grid-cols-4">
         {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
           <StatisticsCard
             key={title}
             {...rest}
             title={title}
             icon={React.createElement(icon, {
-              className: "w-6 h-6 text-white",
+              className: 'w-6 h-6 text-white',
             })}
             footer={
               <Typography className="font-normal text-blue-gray-600">
@@ -48,7 +45,7 @@ export function Home() {
           />
         ))}
       </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
         {statisticsChartsData.map((props) => (
           <StatisticsChart
             key={props.title}
@@ -58,7 +55,10 @@ export function Home() {
                 variant="small"
                 className="flex items-center font-normal text-blue-gray-600"
               >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-blue-gray-400" />
+                <ClockIcon
+                  strokeWidth={2}
+                  className="h-4 w-4 text-blue-gray-400"
+                />
                 &nbsp;{props.footer}
               </Typography>
             }
@@ -66,7 +66,7 @@ export function Home() {
         ))}
       </div>
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
+        <Card className="overflow-hidden border border-blue-gray-100 shadow-sm xl:col-span-2">
           <CardHeader
             floated={false}
             shadow={false}
@@ -81,7 +81,10 @@ export function Home() {
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
-                <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
+                <CheckCircleIcon
+                  strokeWidth={3}
+                  className="h-4 w-4 text-blue-gray-200"
+                />
                 <strong>30 done</strong> this month
               </Typography>
             </div>
@@ -102,15 +105,15 @@ export function Home() {
               </MenuList>
             </Menu>
           </CardHeader>
-          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
+          <CardBody className="overflow-x-scroll px-0 pb-2 pt-0">
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["companies", "members", "budget", "completion"].map(
+                  {['companies', 'members', 'budget', 'completion'].map(
                     (el) => (
                       <th
                         key={el}
-                        className="border-b border-blue-gray-50 py-3 px-6 text-left"
+                        className="border-b border-blue-gray-50 px-6 py-3 text-left"
                       >
                         <Typography
                           variant="small"
@@ -128,8 +131,8 @@ export function Home() {
                   ({ img, name, members, budget, completion }, key) => {
                     const className = `py-3 px-5 ${
                       key === projectsTableData.length - 1
-                        ? ""
-                        : "border-b border-blue-gray-50"
+                        ? ''
+                        : 'border-b border-blue-gray-50'
                     }`;
 
                     return (
@@ -155,7 +158,7 @@ export function Home() {
                                 size="xs"
                                 variant="circular"
                                 className={`cursor-pointer border-2 border-white ${
-                                  key === 0 ? "" : "-ml-2.5"
+                                  key === 0 ? '' : '-ml-2.5'
                                 }`}
                               />
                             </Tooltip>
@@ -180,7 +183,7 @@ export function Home() {
                             <Progress
                               value={completion}
                               variant="gradient"
-                              color={completion === 100 ? "green" : "blue"}
+                              color={completion === 100 ? 'green' : 'blue'}
                               className="h-1"
                             />
                           </div>
@@ -221,8 +224,8 @@ export function Home() {
                   <div
                     className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
                       key === ordersOverviewData.length - 1
-                        ? "after:h-0"
-                        : "after:h-4/6"
+                        ? 'after:h-0'
+                        : 'after:h-4/6'
                     }`}
                   >
                     {React.createElement(icon, {

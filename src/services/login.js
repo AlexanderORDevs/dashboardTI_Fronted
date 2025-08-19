@@ -6,8 +6,9 @@ export const login = async (email, password) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   });
-console.log("successful login");
+  console.log('successful login');
   const data = await res.json();
-  if (!res.ok) throw new Error(data.message || 'Email and password are required');
+  if (!res.ok)
+    throw new Error(data.message || 'Email and password are required');
   return data;
 };

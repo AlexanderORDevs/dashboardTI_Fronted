@@ -6,7 +6,7 @@ const CustomSwal = Swal.mixin({
     popup: 'rounded-2xl',
     confirmButton: 'swal2-confirm-custom',
   },
-  buttonsStyling: false, // Para usar tu propio estilo en el botón
+  buttonsStyling: false,
 });
 
 export default CustomSwal;

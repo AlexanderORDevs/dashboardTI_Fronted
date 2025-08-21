@@ -4,10 +4,9 @@ import {
   TableCellsIcon,
   InformationCircleIcon,
   ServerStackIcon,
-  RectangleStackIcon,
 } from '@heroicons/react/24/solid';
 import { Home, Profile, Tables, Notifications } from '@/pages/dashboard';
-import { SignIn, SignUp } from '@/pages/auth';
+import { SignIn } from '@/pages/auth';
 import { CreateRegister } from '@/pages/uat';
 
 const icon = {
@@ -23,24 +22,28 @@ export const routes = [
         name: 'dashboard',
         path: '/home',
         element: <Home />,
+        hidden: true,
       },
       {
         icon: <UserCircleIcon {...icon} />,
         name: 'profile',
         path: '/profile',
         element: <Profile />,
+        hidden: true,
       },
       {
         icon: <TableCellsIcon {...icon} />,
         name: 'tables',
         path: '/tables',
         element: <Tables />,
+        hidden: true,
       },
       {
         icon: <InformationCircleIcon {...icon} />,
         name: 'notifications',
         path: '/notifications',
         element: <Notifications />,
+        hidden: true,
       },
       {
         icon: <ServerStackIcon {...icon} />,
@@ -50,18 +53,6 @@ export const routes = [
       },
     ],
   },
-  //{
-  // title: 'Uat Test',
-  // layout: 'uat',
-  // pages: [
-  //   {
-  //     icon: <HomeIcon {...icon} />,
-  //     name: 'Register Create',
-  //     path: '/create',
-  //     element: <CreateRegister />,
-  //   },
-  // ],
-  //},
   {
     title: 'auth pages',
     layout: 'auth',
@@ -71,12 +62,7 @@ export const routes = [
         name: 'sign in',
         path: '/sign-in',
         element: <SignIn />,
-      },
-      {
-        icon: <RectangleStackIcon {...icon} />,
-        name: 'sign up',
-        path: '/sign-up',
-        element: <SignUp />,
+        hidden: true,
       },
     ],
   },

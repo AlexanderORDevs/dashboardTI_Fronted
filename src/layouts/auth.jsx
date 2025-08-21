@@ -1,33 +1,26 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import {
   ChartPieIcon,
   UserIcon,
-  UserPlusIcon,
   ArrowRightOnRectangleIcon,
-} from "@heroicons/react/24/solid";
-import { Navbar, Footer } from "@/widgets/layout";
-import routes from "@/routes";
+} from '@heroicons/react/24/solid';
+import routes from '@/routes';
 
 export function Auth() {
   const navbarRoutes = [
     {
-      name: "dashboard",
-      path: "/dashboard/home",
+      name: 'dashboard',
+      path: '/dashboard/home',
       icon: ChartPieIcon,
     },
     {
-      name: "profile",
-      path: "/dashboard/home",
+      name: 'profile',
+      path: '/dashboard/home',
       icon: UserIcon,
     },
     {
-      name: "sign up",
-      path: "/auth/sign-up",
-      icon: UserPlusIcon,
-    },
-    {
-      name: "sign in",
-      path: "/auth/sign-in",
+      name: 'sign in',
+      path: '/auth/sign-in',
       icon: ArrowRightOnRectangleIcon,
     },
   ];
@@ -37,7 +30,7 @@ export function Auth() {
       <Routes>
         {routes.map(
           ({ layout, pages }) =>
-            layout === "auth" &&
+            layout === 'auth' &&
             pages.map(({ path, element }) => (
               <Route exact path={path} element={element} />
             ))
@@ -47,6 +40,6 @@ export function Auth() {
   );
 }
 
-Auth.displayName = "/src/layout/Auth.jsx";
+Auth.displayName = '/src/layout/Auth.jsx';
 
 export default Auth;

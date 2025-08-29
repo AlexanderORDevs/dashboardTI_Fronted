@@ -17,7 +17,7 @@ export default function UatFilters({
   hasActiveFilters,
 }) {
   return (
-    <div className="mb-4 flex flex-col flex-wrap gap-2 p-8 sm:flex-row sm:p-8">
+    <div className="mb-4 flex flex-col flex-wrap items-end gap-2 p-2 sm:flex-row sm:p-8">
       {filterConfigs[selectedTable].map((filter) => {
         if (filter.type === 'select') {
           let options = [];

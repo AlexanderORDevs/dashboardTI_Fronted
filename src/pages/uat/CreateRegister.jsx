@@ -51,6 +51,7 @@ export function CreateRegister() {
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({});
 
   //Add status for form
   const [testType, setTestType] = useState('provider');
@@ -171,6 +172,7 @@ export function CreateRegister() {
   };
 
   const getTesterName = (testerId) => {
+    if (!Array.isArray(users)) return '';
     const tester = users.find((u) => String(u.id) === String(testerId));
     return tester ? tester.username : testerId || '';
   };
@@ -196,52 +198,6 @@ export function CreateRegister() {
     return domain ? domain.name : id || '';
   }
 
-  function validateGeneralFields() {
-    if (
-      !testerId.toString().trim() ||
-      !user.trim() ||
-      !String(idProduct).trim()
-    ) {
-      CustomSwal.fire({
-        icon: 'error',
-        title: 'Required Fields',
-        text: 'Tester ID, User, and Product are required.',
-      });
-      return false;
-    }
-    return true;
-  }
-
-  function validateLandingFields() {
-    if (!urlLanding.trim() || !String(idDomain).trim()) {
-      CustomSwal.fire({
-        icon: 'error',
-        title: 'Required Fields',
-        text: 'URL Landing and Domain Name are required for Landing.',
-      });
-      return false;
-    }
-    return true;
-  }
-
-  function validateDidFields() {
-    if (
-      !did.trim() ||
-      !mode.trim() ||
-      !cpaCpl.trim() ||
-      !contact.trim() ||
-      !didDate.trim()
-    ) {
-      CustomSwal.fire({
-        icon: 'error',
-        title: 'Required Fields',
-        text: 'DID, Mode, CPA/CPL, Contact, and DID Date are required for DID.',
-      });
-      return false;
-    }
-    return true;
-  }
-
   function renderMainFormFields() {
     return (
       <>
@@ -265,7 +221,11 @@ export function CreateRegister() {
             id="testerId"
             name="testerId"
             value={testerId}
-            onChange={(e) => setTesterId(String(e.target.value))}
+            onChange={(e) => {
+              setTesterId(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, testerId: false }));
+            }}
+            className={fieldErrors.testerId ? 'border-red-500' : ''}
           >
             <Option value="" disabled hidden>
               Select Tester
@@ -277,6 +237,11 @@ export function CreateRegister() {
                 </Option>
               ))}
           </Select>
+          {fieldErrors.testerId && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
         {/* User */}
         <div className="sm:col-span-3">
@@ -287,8 +252,17 @@ export function CreateRegister() {
             type="text"
             placeholder="Enter user name"
             value={user}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => {
+              setUser(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, user: false }));
+            }}
+            className={fieldErrors.user ? 'border-red-500' : ''}
           />
+          {fieldErrors.user && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
         {/* Product */}
         <div className="sm:col-span-3">
@@ -297,7 +271,11 @@ export function CreateRegister() {
             id="product"
             name="idProduct"
             value={idProduct}
-            onChange={(e) => setIdProduct(e.target.value)}
+            onChange={(e) => {
+              setIdProduct(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, idProduct: false }));
+            }}
+            className={fieldErrors.idProduct ? 'border-red-500' : ''}
           >
             <Option value="" disabled hidden>
               Select Product
@@ -308,6 +286,11 @@ export function CreateRegister() {
               </Option>
             ))}
           </Select>
+          {fieldErrors.idProduct && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
         {/* uat Type selector */}
         <div className="sm:col-span-3">
@@ -338,8 +321,17 @@ export function CreateRegister() {
             type="text"
             placeholder="Enter url landing"
             value={urlLanding}
-            onChange={(e) => setUrlLanding(e.target.value)}
+            onChange={(e) => {
+              setUrlLanding(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, urlLanding: false }));
+            }}
+            className={fieldErrors.urlLanding ? 'border-red-500' : ''}
           />
+          {fieldErrors.urlLanding && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
 
         {/* Domain Name */}
@@ -349,7 +341,11 @@ export function CreateRegister() {
             id="domainName"
             name="idDomain"
             value={idDomain}
-            onChange={(e) => setIdDomain(e.target.value)}
+            onChange={(e) => {
+              setIdDomain(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, idDomain: false }));
+            }}
+            className={fieldErrors.idDomain ? 'border-red-500' : ''}
           >
             <Option value="" disabled hidden>
               Select Domain
@@ -360,6 +356,11 @@ export function CreateRegister() {
               </Option>
             ))}
           </Select>
+          {fieldErrors.idDomain && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
       </>
     );
@@ -377,8 +378,17 @@ export function CreateRegister() {
             type="text"
             placeholder="Contact"
             value={contact}
-            onChange={(e) => setContact(e.target.value)}
+            onChange={(e) => {
+              setContact(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, contact: false }));
+            }}
+            className={fieldErrors.contact ? 'border-red-500' : ''}
           />
+          {fieldErrors.contact && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
 
         {/* DID */}
@@ -390,8 +400,17 @@ export function CreateRegister() {
             type="text"
             placeholder="Enter DID"
             value={did}
-            onChange={(e) => setDid(e.target.value)}
+            onChange={(e) => {
+              setDid(e.target.value);
+              setFieldErrors((prev) => ({ ...prev, did: false }));
+            }}
+            className={fieldErrors.did ? 'border-red-500' : ''}
           />
+          {fieldErrors.did && (
+            <span className="mt-1 block text-xs text-red-500">
+              This field is required
+            </span>
+          )}
         </div>
 
         {/* START DATE DID */}
@@ -403,13 +422,22 @@ export function CreateRegister() {
               name="did_date"
               type="date"
               value={didDate}
-              onChange={(e) => setDidDate(e.target.value)}
-              className="pr-10"
+              onChange={(e) => {
+                setDidDate(e.target.value);
+                setFieldErrors((prev) => ({ ...prev, didDate: false }));
+              }}
+              className={`${fieldErrors.didDate ? 'border-red-500' : ''} pr-10`}
               style={{ colorScheme: 'light' }}
             />
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"></span>
+            {fieldErrors.didDate && (
+              <span className="mt-1 block text-xs text-red-500">
+                This field is required
+              </span>
+            )}
           </div>
         </div>
+
         {/* Mode */}
         <div className="sm:col-span-3">
           <Label htmlFor="uat_type">Mode</Label>
@@ -815,10 +843,38 @@ export function CreateRegister() {
   // Handler for submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // General validation
-    if (!validateGeneralFields()) return;
-    if (uatType === 'landing' && !validateLandingFields()) return;
-    if (uatType === 'did_select' && !validateDidFields()) return;
+    let errors = {};
+
+    // General
+    if (!testerId.toString().trim()) errors.testerId = true;
+    if (!user.trim()) errors.user = true;
+    if (!String(idProduct).trim()) errors.idProduct = true;
+
+    // Landing
+    if (uatType === 'landing') {
+      if (!urlLanding.trim()) errors.urlLanding = true;
+      if (!String(idDomain).trim()) errors.idDomain = true;
+    }
+
+    // DID
+    if (uatType === 'did_select') {
+      if (!did.trim()) errors.did = true;
+      if (!mode.trim()) errors.mode = true;
+      if (!cpaCpl.trim()) errors.cpaCpl = true;
+      if (!contact.trim()) errors.contact = true;
+      if (!didDate.trim()) errors.didDate = true;
+    }
+
+    setFieldErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      CustomSwal.fire({
+        icon: 'error',
+        title: 'Required Fields',
+        text: 'Please fill in all required fields.',
+      });
+      return;
+    }
 
     const formData = {
       testType,

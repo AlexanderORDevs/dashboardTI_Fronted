@@ -1,13 +1,13 @@
 import {
   HomeIcon,
   UserCircleIcon,
-  TableCellsIcon,
-  InformationCircleIcon,
   ServerStackIcon,
+  DocumentDuplicateIcon,
 } from '@heroicons/react/24/solid';
-import { Home, Profile, Tables, Notifications } from '@/pages/dashboard';
+import { Home, Profile } from '@/pages/dashboard';
 import { SignIn } from '@/pages/auth';
 import { CreateRegister } from '@/pages/uat';
+import { LandingTemplates } from '@/pages/landing';
 
 const icon = {
   className: 'w-5 h-5 text-inherit',
@@ -31,19 +31,12 @@ export const routes = [
         element: <Profile />,
         hidden: true,
       },
+      // Landing Manager
       {
-        icon: <TableCellsIcon {...icon} />,
-        name: 'tables',
-        path: '/tables',
-        element: <Tables />,
-        hidden: true,
-      },
-      {
-        icon: <InformationCircleIcon {...icon} />,
-        name: 'notifications',
-        path: '/notifications',
-        element: <Notifications />,
-        hidden: true,
+        icon: <DocumentDuplicateIcon {...icon} />,
+        name: 'Landing Template',
+        path: '/landingTemplate',
+        element: <LandingTemplates />,
       },
       {
         icon: <ServerStackIcon {...icon} />,

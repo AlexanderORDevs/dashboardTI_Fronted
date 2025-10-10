@@ -1,1 +1,0 @@
-export * from "@/pages/uat/CreateRegister";

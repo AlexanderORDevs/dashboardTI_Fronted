@@ -1,6 +1,6 @@
 import { Input, Button, Typography } from '@material-tailwind/react';
 import { useState, useContext } from 'react';
-import { login as loginService } from '../../services/login';
+import { login as loginService } from '../../services/users/login';
 import { AuthContext } from '../../context/loginContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -86,7 +86,7 @@ export function SignIn() {
       </div>
       <div className="hidden h-full w-3/5 lg:block">
         <img
-          src="/img/pattern1.png"
+          src="/img/pattern.png"
           className="h-full w-full rounded-3xl object-cover"
         />
       </div>

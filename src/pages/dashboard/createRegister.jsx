@@ -906,6 +906,7 @@ export function CreateRegister() {
     if (isEditing && editId) {
       formData.id = editId;
     }
+
     try {
       if (isEditing) {
         await updatedRegister(formData);
@@ -939,6 +940,7 @@ export function CreateRegister() {
       console.error('Error formData', error);
     }
   };
+
   return (
     <div className="scale-80 mb-8 mt-12 flex flex-col gap-12">
       <Card color="white">

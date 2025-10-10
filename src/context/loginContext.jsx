@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import { getCurrentUser } from "../services/validateUser";
+import { createContext, useState, useEffect } from 'react';
+import { getCurrentUser } from '../services/users/validateUser';
 
 export const AuthContext = createContext();
 
@@ -8,20 +8,20 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // para controlar carga inicial
 
   const login = (userData, token) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("token", token);
+    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('token', token);
     setUser(userData);
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setUser(null);
   };
 
   useEffect(() => {
     const verifySession = async () => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       if (!token) {
         setLoading(false);
         return;

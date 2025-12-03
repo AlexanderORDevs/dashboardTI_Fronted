@@ -8,6 +8,7 @@ export const login = async (email, password) => {
   });
   console.log('successful login');
   const data = await res.json();
+  localStorage.setItem('token', data.token);
   if (!res.ok)
     throw new Error(data.message || 'Email and password are required');
   return data;

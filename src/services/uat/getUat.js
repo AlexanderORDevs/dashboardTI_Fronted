@@ -2,9 +2,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const getUatRecords = async (type = 'landing', filters = {}) => {
   const token = localStorage.getItem('token');
-  let endpoint = '/landingUatGet';
+  let endpoint = '/uat/landingGet';
   if (type === 'did') {
-    endpoint = '/didUatGet';
+    endpoint = '/uat/didGet';
   }
   // Build query string if there are filters
   const query = Object.keys(filters).length

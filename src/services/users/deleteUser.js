@@ -4,7 +4,7 @@ export const deleteUsers = async (payload) => {
   try {
     const token = localStorage.getItem('token');
     const { id } = payload;
-    const url = `${API_URL}/deleteUser/${id}`;
+    const url = `${API_URL}/users/delete/${id}`;
 
     const response = await fetch(url, {
       method: 'DELETE',

@@ -4,7 +4,7 @@ export const updateUsers = async (payload) => {
   try {
     const token = localStorage.getItem('token');
     const { id, ...dataToUpdateUser } = payload;
-    const url = `${API_URL}/updateUser/${id}`;
+    const url = `${API_URL}/users/update/${id}`;
 
     const response = await fetch(url, {
       method: 'PUT',

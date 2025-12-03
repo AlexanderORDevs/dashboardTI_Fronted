@@ -3,7 +3,7 @@ const token = localStorage.getItem('token');
 
 export const createUser = async (payload) => {
   try {
-    const response = await fetch(`${API_URL}/createUser`, {
+    const response = await fetch(`${API_URL}/users/create`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

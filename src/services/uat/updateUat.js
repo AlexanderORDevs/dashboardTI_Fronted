@@ -3,9 +3,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 export const updatedRegister = async (payload) => {
   try {
     const token = localStorage.getItem('token');
-    let endpoint = '/uatLandingUpdate';
+    let endpoint = '/uat/landingUpdate';
     if (payload.uatType === 'did_select') {
-      endpoint = '/uatDidUpdate';
+      endpoint = '/uat/didUpdate';
     }
     const { id, ...dataToUpdate } = payload;
     const url = `${API_URL}${endpoint}/${id}`;

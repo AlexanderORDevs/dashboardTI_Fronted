@@ -3,10 +3,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 export const saveRegister = async (payload) => {
   try {
     const token = localStorage.getItem('token');
-    let endpoint = '/landingUatCreate';
+    let endpoint = '/uat/landingCreate';
 
     if (payload.uatType === 'did_select') {
-      endpoint = '/didUatCreate';
+      endpoint = '/uat/didCreate';
     }
     const response = await fetch(`${API_URL}${endpoint}`, {
       method: 'POST',
